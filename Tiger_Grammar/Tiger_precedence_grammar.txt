@@ -1,0 +1,103 @@
+TP -> let DS in SS end
+DS -> TDL VDL FDL
+TDL -> ''
+TDL -> TD TDL
+VDL -> ''
+VDL -> VD VDL
+FDL -> ''
+FDL -> FD FDL
+TD -> type id = T ;
+T -> TID
+T -> array [ INTLIT ] of TID
+T -> record FL end
+T -> id
+FL -> id : TID ; FL
+FL -> ''
+TID -> int
+TID -> float
+VD -> var IDL : T OI ;
+IDL -> id
+IDL -> id , IDL
+OI -> ''
+OI -> := C
+FD -> function id ( PL ) RT begin SS end ;
+PL -> ''
+PL -> P PLT
+PLT -> ''
+PLT -> , P PLT
+RT -> ''
+RT -> : T
+P -> id : T
+SS -> S
+SS -> S SS
+S -> LV := E ;
+S -> if E then SS endif ;
+S -> if E then SS else SS endif ;
+S -> while E do SS enddo ;
+S -> for id := E to E do SS enddo ;
+S -> OP id ( EL ) ;
+OP -> LV :=
+OP -> ''
+S -> break ;
+S -> return E ;
+S -> let DS in SS end
+E -> E1
+E1 -> E1 | E2
+E1 -> E2
+E2 -> E2 & E3
+E2 -> E3
+E3 -> E3 <= E4
+E3 -> E3 >= E4
+E3 -> E3 < E4
+E3 -> E3 > E4
+E3 -> E3 <> E4
+E3 -> E3 = E4
+E3 -> E4
+E4 -> E4 - E5
+E4 -> E4 + E5
+E4 -> E5
+E5 -> E5 / E6
+E5 -> E5 * E6
+E5 -> E6
+E6 -> ( E )
+E6 -> C
+E6 -> LV
+C -> INTLIT
+C -> FLOATLIT
+EL -> ''
+EL -> E ELT
+ELT -> , E ELT
+ELT -> ''
+LV -> id LVT
+LVT -> [ E ]
+LVT -> . id
+LVT -> ''
+
+
+<tiger-program> - TP
+<declaration-segment> - DS
+<stat-seq> - SS
+<type-declaration-list> - TDL
+<var-declaration-list> - VDL
+<funct-declaration-list> - FDL
+<type-declaration> - TD
+<var-declaration> - VD
+<funct-declaration> - FD
+<type> - T
+<type-id> - TID
+<field-list> - FL
+<id-list> - IDL
+<optional-init> - OI
+<param-list> - PL
+<ret-type> - RT
+<param> - P
+<param-list-tail> - PLT
+<stat> - S
+<const> - C
+<lvalue> - LV
+<expr> - E
+<opt­prefix> - OP (no longer used)
+<expr-list> - EL
+<binary-operator> - BO (no longer used)
+<expr-list-tail> - ELT
+<lvalue-tail> - LVT

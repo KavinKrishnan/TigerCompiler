@@ -1,0 +1,115 @@
+0       TP -> let DS in SS end
+1       DS -> TDL VDL FDL
+2.0     TDL -> ''
+2.1     TDL -> TD TDL
+3.0     VDL -> ''
+3.1     VDL -> VD VDL
+4.0     FDL -> ''
+4.1     FDL -> FD FDL
+5       TD -> type id = T ;
+6.0     T -> TID
+6.1     T -> array [ INTLIT ] of TID
+6.2     T -> record FL end
+6.3     T -> id
+7.0     FL -> id : TID ; FL
+7.1     FL -> ''
+8.0     TID -> int
+8.1     TID -> float
+9       VD -> var IDL : T OI ;
+10      IDL -> id IDL'
+11.0    IDL' -> ''
+11.1    IDL' -> , IDL
+12.0    OI -> ''
+12.1    OI -> := C
+13      FD -> function id ( PL ) RT begin SS end ;
+14.0    PL -> ''
+14.1    PL -> P PLT
+15.0    PLT -> ''
+15.1    PLT -> , P PLT
+16.0    RT -> ''
+16.1    RT -> : T
+17      P -> id : T
+18      SS -> S SS'
+19.0    SS' -> ''
+19.1    SS' -> SS
+20.0    S -> if E then SS S' ;
+21.0    S' -> endif
+21.1    S' -> else SS endif
+20.1    S -> while E do SS enddo ;
+20.2    S -> for id := E to E do SS enddo ;
+20.3    S -> id S'' ;
+22.0    S'' -> ( EL )
+22.1    S'' -> LVT := S'''
+23.0    S''' -> C E5' E4' E3' E2' E1'
+23.1    S''' -> ( E ) E5' E4' E3' E2' E1'
+23.2    S''' -> id S''''
+24.0    S'''' -> ( EL )
+24.1    S'''' -> LVT E5' E4' E3' E2' E1'
+20.4    S -> break ;
+20.5    S -> return E ;
+20.6    S -> let DS in SS end
+25      E -> E1
+26      E1 -> E2 E1'
+27.0    E1' -> | E2 E1'
+27.1    E1' -> ''
+28      E2 -> E3 E2'
+29.0    E2' -> & E3 E2'
+29.1    E2' -> ''
+30      E3 -> E4 E3'
+31.0    E3' -> <= E4 E3'
+31.1    E3' -> >= E4 E3'
+31.2    E3' -> < E4 E3'
+31.3    E3' -> > E4 E3'
+31.4    E3' -> <> E4 E3'
+31.5    E3' -> = E4 E3'
+31.6    E3' -> ''
+32      E4 -> E5 E4'
+33.0    E4' -> - E5 E4'
+33.1    E4' -> + E5 E4'
+33.2    E4' -> ''
+34      E5 -> E6 E5'
+35.0    E5' -> / E6 E5'
+35.1    E5' -> * E6 E5'
+35.2    E5' -> ''
+36.0    E6 -> ( E )
+36.1    E6 -> C
+36.2    E6 -> LV
+37.0    C -> INTLIT
+37.1    C -> FLOATLIT
+38.0    EL -> ''
+38.1    EL -> E ELT
+39.0    ELT -> , E ELT
+39.1    ELT -> ''
+40      LV -> id LVT
+41.0    LVT -> [ E ]
+41.1    LVT -> . id
+41.2    LVT -> ''
+
+
+<tiger-program> - TP
+<declaration-segment> - DS
+<stat-seq> - SS
+<type-declaration-list> - TDL
+<var-declaration-list> - VDL
+<funct-declaration-list> - FDL
+<type-declaration> - TD
+<var-declaration> - VD
+<funct-declaration> - FD
+<type> - T
+<type-id> - TID
+<field-list> - FL
+<id-list> - IDL
+<optional-init> - OI
+<param-list> - PL
+<ret-type> - RT
+<param> - P
+<param-list-tail> - PLT
+<stat> - S
+<const> - C
+<lvalue> - LV
+<expr> - E
+<opt­prefix> - OP (no longer used)
+<expr-list> - EL
+<binary-operator> - BO (no longer used)
+<expr-list-tail> - ELT
+<lvalue-tail> - LVT

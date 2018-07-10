@@ -1,0 +1,12 @@
+	assign, X, 0.0,
+	assign, Y, 0.0,
+	goto, main, ,
+
+print:
+	call, printi, X
+	return, , ,
+
+main:
+	call, print, 5
+	assign, X, 1.0,
+	return, , ,

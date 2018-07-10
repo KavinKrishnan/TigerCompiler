@@ -1,0 +1,5 @@
+out/
+*.class
+.idea/
+cs4240.iml
+TigerCompiler.iml

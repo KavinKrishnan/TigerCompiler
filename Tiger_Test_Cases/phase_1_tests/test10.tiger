@@ -1,0 +1,13 @@
+let
+        type rec = record a : int; b : float; end ;
+        type arr = array[100] of int;
+        var y : rec;
+        var x : int;
+        var err : foo;
+in
+        for i := 2 to 100 do
+                y.a := i;
+                y.b := y.a + i;
+                printi(a[i]);
+        enddo;
+end

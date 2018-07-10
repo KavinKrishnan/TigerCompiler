@@ -1,0 +1,8 @@
+let
+    type myRecord = record sum: int; product:int;end;
+    var x :int := 10;
+    var testRecord :myRecord;
+in
+    testRecord.sum := 5;
+    testRecord.product := 10;
+end

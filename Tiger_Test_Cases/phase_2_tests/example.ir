@@ -1,0 +1,62 @@
+
+main:
+    assign, a, 1.0, // a = 1.0
+    assign, b, 1.0,
+    assign, c, 1.0,
+    assign, i, 0,
+    assign, t1, 5,
+    assign, t0, 0,
+
+label0:
+    brgt, t0, t1, label1 // if (t0 > t1) goto label 1, else fall through
+    assign, i, t0,
+    add, t0, 1, t0 // t0 = t0 + 1
+    mult, a, 1.5, t2 // t2 = a * 1.5
+    assign, b, t2,
+    add, a, b, t3
+    assign, b, t3,
+    mult, 2.0, a, t4
+    assign, c, t4,
+    mult, a, c, t5
+    assign, a, t5,
+    mult, 1.5, a, t6
+    assign, b, t6,
+    add, a, b, t7
+    assign, c, t7,
+    brneq, i, 4, label2 // if i <> 4) go to label 2, else fall through
+    add, a, 1.0, t8
+    assign, c, t8,
+    goto, label3, ,
+
+label2:
+    add, a, c, t9
+    assign, c, t9,
+
+label3:
+    brgeq, j, 5, label4 // if ( j >= 5), go to label 4 else fall through
+    brgeq, i, 3, label5
+    add, j, 1, t10
+    assign, j, t10,
+
+label5:
+    goto, label3, , // unconditional branch go to label 3
+
+label4:
+    goto, label0, ,
+
+label1:
+    add, 2.0, c, t11
+    assign, a, t11,
+    mult, a, a, t12
+    assign, c, t12,
+    brleq, c, 4.0, label6 // if (c < = 4) go to label 6, else fall through
+    add, a, c, t13
+    assign, a, t13,
+    goto, label7, ,
+
+label6:
+    mult, a, c, t14
+    assign, c, t14,
+
+label7:
+    return, , , // the function returns to caller

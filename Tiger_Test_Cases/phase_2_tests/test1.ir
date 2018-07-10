@@ -1,0 +1,19 @@
+        assign, X, 100, 10
+        assign, Y, 100, 10  
+        assign, i, 0, 
+        assign, sum, 0, 
+
+main:
+        brgeq, i, 100, end_loop
+        array_load, t1, X, i
+        array_load, t2, Y, i
+        mult, t1, t2, t3
+        add, sum, t3, sum
+        add, i, 1, i
+        goto, main, ,
+
+end_loop:
+        call, printi, sum
+	return, , ,
+
+
